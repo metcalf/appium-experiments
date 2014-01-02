@@ -32,7 +32,7 @@ describe('opening a popup', function(){
       return assert.eventually.equal(
         _this.driver
           .init(browser)
-          .get('http://fiddle.jshell.net/XJukJ/1/show/light/')
+          .get('http://fiddle.jshell.net/XJukJ/2/show/light/')
           .waitForElementById('clickMe', 5000)
           .click()
           .then(function(){
