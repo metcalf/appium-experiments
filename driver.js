@@ -7,7 +7,7 @@ var driver = require('./driver.js');
 
 var username, key;
 
-module.exports = function(){
+module.exports = function(url, port){
   before(function(){
     var deferred = Q.defer();
 
@@ -31,8 +31,8 @@ module.exports = function(){
     this.timeout(20000);
 
     this.driver = wd.promiseChainRemote(
-      "ondemand.saucelabs.com",
-      80,
+      url || "ondemand.saucelabs.com",
+      port || 80,
       username,
       key
     );

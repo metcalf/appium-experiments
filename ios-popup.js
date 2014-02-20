@@ -15,13 +15,13 @@ var BROWSERS = {
     browserName: '',
     app: 'safari',
     device: 'iPhone Simulator',
-    platform: 'OS X 10.8',
-    version: '6',
+    // platform: 'OS X 10.8',
+    version: '7.0',
     'device-orientation': 'portrait',
   },
 };
 
-require('./driver.js')();
+require('./driver.js')('127.0.0.1', '4723');
 
 describe('opening a popup', function(){
   _.each(BROWSERS, function(browser, browserName){
@@ -29,25 +29,23 @@ describe('opening a popup', function(){
       var _this = this;
       this.timeout(60000);
 
-      return assert.eventually.equal(
-        _this.driver
+      return _this.driver
           .init(browser)
-          .get('http://fiddle.jshell.net/XJukJ/2/show/light/')
+          .get('http://fiddle.jshell.net/XJukJ/4/show/light/')
           .waitForElementById('clickMe', 5000)
           .click()
           .then(function(){
-            var deferred = Q.defer();
-
-            setTimeout(function(){
-              _this.driver.windowHandles()
-                .then(function(handles){
-                  console.log('handles: ' + handles);
-                  deferred.fulfill(handles.length);
-                });
-            }, 5000);
-
-            return deferred.promise;
-          }), 2, 'Popup did not appear');
+            return _this.driver.windowHandles()
+              .then(function(handles){
+                console.log('handles: ' + handles);
+                assert.equal(2, handles.length, "Popup did not appear");
+                return _this.driver.window(handles[1]);
+              });
+          }).then(function(){
+            return _this.driver
+              .waitForElementByCssSelector("div.pay a")
+              .click();
+          });
     });
   });
 });
