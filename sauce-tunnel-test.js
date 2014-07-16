@@ -10,7 +10,8 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var desiredCapabilities = {
   browserName: argv.browser || 'chrome',
-  platform: argv.platform,
+  platform: argv.platform || 'Windows 8',
+  version: '35',
   'tunnel-identifier': argv['tunnel-identifier'],
 };
 
