@@ -1,7 +1,7 @@
-appium-experiments
+webdriver-experiments
 ==================
 
-Debugging and experimenting with appium
+Debugging and experimenting with webdriver (in particular on Saucelabs)
 
 Before starting, you need to create a `sauce-credentials.json` file in the root directory.  It should contain a single object with `username` and `key` keys corresponding to your Saucelabs username and API secret key.
 
@@ -9,7 +9,7 @@ You'll also need to install packages:
 
     npm install
 
-iOS Popup Bug
+iOS Popup Bug (fixed)
 -------------
 
 Run:
