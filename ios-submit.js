@@ -18,7 +18,6 @@ var BROWSERS = {
     // platform: 'OS X 10.8',
     version: '7.1',
     'device-orientation': 'portrait',
-    'nonSyntheticWebClick': false,
   },
   ipad: {
     browserName: '',
@@ -27,7 +26,6 @@ var BROWSERS = {
     // platform: 'OS X 10.8',
     version: '7.1',
     'device-orientation': 'landscape',
-    'nonSyntheticWebClick': false,
   },
 };
 
@@ -41,11 +39,10 @@ describe('opening a popup', function(){
 
       return _this.driver
         .init(browser)
-        .get('http://fiddle.jshell.net/F2JvB/3/show/light/')
-        .waitForElementById('clickMeTop', 5000)
+        .get('http://fiddle.jshell.net/5WySp/5/show/light/')
+        .waitForElementById('clickMe', 5000)
         .click()
-        .elementById('clickMeBottom')
-        .click();
+        .waitForElementByClassName('clicked', 5000);
     });
   });
 });

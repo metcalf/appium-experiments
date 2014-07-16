@@ -16,7 +16,15 @@ var BROWSERS = {
     app: 'safari',
     device: 'iPhone Simulator',
     // platform: 'OS X 10.8',
-    version: '7.0',
+    version: '7.1',
+    'device-orientation': 'portrait',
+  },
+  ipad: {
+    browserName: '',
+    app: 'safari',
+    device: 'iPad Simulator',
+    // platform: 'OS X 10.8',
+    version: '7.1',
     'device-orientation': 'portrait',
   },
 };
